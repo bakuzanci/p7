@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYUUMA VAN ASHVYR - Gold Shimmer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:radial-gradient(circle at center,#000,#111,#000);
+  font-family:'Orbitron',sans-serif;
+  color:#ffd700;
+  height:100vh;width:100vw;
+  overflow-x:hidden;overflow-y:auto;
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;padding-bottom:80px;
+}
+body::before{
+  content:"";position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;border:4px solid rgba(255,215,0,0.6);border-radius:10px;
+  box-shadow:0 0 25px gold,inset 0 0 35px rgba(255,230,100,0.5);
+  animation:aura 3s infinite ease-in-out;
+}
+@keyframes aura{
+  0%,100%{box-shadow:0 0 25px gold,inset 0 0 35px rgba(255,230,100,0.5);}  
+  50%{box-shadow:0 0 50px #ffdf00,inset 0 0 60px rgba(255,240,150,0.9);}  
+}
+.particle{position:absolute;width:3px;height:3px;background:gold;border-radius:50%;opacity:.7;animation:sparkle 4s infinite ease-in-out;}
+@keyframes sparkle{0%,100%{opacity:.2;transform:scale(.5);}50%{opacity:1;transform:scale(1.3);}}
+.slide-up{opacity:0;transform:translateY(30px);animation:slideUp 1.5s forwards;}
+@keyframes slideUp{0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+.title{font-size:1.8rem;text-align:center;z-index:2;margin-top:40px;animation:goldPulse 3s infinite ease-in-out;}
+@keyframes goldPulse{0%,100%{text-shadow:0 0 10px #ffea00,0 0 25px #ffb700,0 0 40px #ffcc00;}50%{text-shadow:0 0 25px #fff000,0 0 50px #ffdd33,0 0 80px #ffd700;}}
+.profile{margin-top:40px;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.profile img{width:160px;height:160px;border-radius:50%;border:3px solid #ffd700;box-shadow:0 0 25px #ffbf00,0 0 45px #ffcc33;transition:transform .3s ease;}
+.profile img:hover{transform:scale(1.05);}  
+.profile-name{
+  text-align:center;margin-top:10px;font-size:1.2rem;font-weight:bold;
+  background: linear-gradient(90deg, #ffd700, #fff700, #ffea00, #ffd700);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 3s linear infinite;
+  text-shadow: 0 0 5px #ffea00, 0 0 15px #ffcc33, 0 0 25px #ffbf00;
+}
+@keyframes goldShimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.contact-box{display:flex;justify-content:center;align-items:flex-start;gap:60px;margin-top:25px;z-index:2;flex-wrap:wrap;width:80%;}
+.contact-left,.contact-right{text-align:center;}
+.contact-left p{font-size:.9rem;margin-top:10px;color:#ffeb7f;text-shadow:0 0 10px #fff,0 0 25px gold;}
+.copy-btn{margin-top:8px;background:#ffd700;color:#000;font-weight:bold;border:none;border-radius:6px;padding:5px 12px;cursor:pointer;transition:all .2s ease-in-out;}
+.copy-btn:hover{background:#fff;transform:scale(1.05);}  
+.contact-right img{width:100px;border-radius:12px;border:2px solid gold;box-shadow:0 0 25px #ffbf00,0 0 45px #ffcc33;transition:transform .3s ease;}
+.contact-right img:hover{transform:scale(1.08);}  
+.banner{margin-top:30px;z-index:2;position:relative;overflow:hidden;border-radius:15px;}
+.banner img{
+  width:80vw;max-width:500px;border-radius:15px;border:2px solid gold;
+  box-shadow:0 0 25px #ffbf00,0 0 45px #ffcc33;transition:transform .3s ease;display:block;
+}
+.banner::after{
+  content:"";position:absolute;top:0;left:-75%;width:50%;height:100%;
+  background:linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
+  transform:skewX(-25deg);animation:bannerShimmer 2s infinite;
+}
+@keyframes bannerShimmer{0%{left:-75%;}100%{left:125%;}}
+.fees-container{display:flex;justify-content:space-between;width:90%;max-width:600px;margin-top:35px;z-index:3;flex-wrap:wrap;text-align:left;}
+.fees-left,.fees-right{font-size:.75rem;line-height:1.6;color:#fff;text-shadow:0 0 10px gold;width:48%;}
+.fees-right strong{color:#ffea00;}
+.ending{margin-top:35px;width:100%;text-align:center;font-size:1rem;color:#fff;text-shadow:0 0 30px gold,0 0 60px #ffcc33;z-index:25;}
+/* FIXED MUSIC BUTTON */
+.music-btn{position:fixed;top:15px;right:20px;font-size:20px;cursor:pointer;z-index:50;color:#ffeb3b;text-shadow:0 0 10px gold,0 0 20px #fff700;transition:transform .2s;text-align:center;}
+.music-btn:hover{transform:scale(1.3);}  
+.music-label{position:fixed;top:45px;right:15px;font-size:0.8rem;color:#fff700;text-shadow:0 0 8px gold,0 0 15px #ffea00;font-weight:bold;}
+</style>
+</head>
+<body><!-- MUSIC: TAP TO PLAY (NO AUTOPLAY) --><audio id="bg-music" loop preload="none">
+  <source src="https://files.catbox.moe/u4ui3m.mp3" type="audio/mpeg">
+</audio>
+<div class="music-btn" onclick="toggleMusic()">▶️</div>
+<div class="music-label">MUSIC</div><script>
+for(let i=0;i<60;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'vw';
+  p.style.top=Math.random()*100+'vh';
+  p.style.animationDelay=Math.random()*4+'s';
+  document.body.appendChild(p);
+}
+function copyDana(){
+  navigator.clipboard.writeText("085706645429");
+  alert("Nomor DANA disalin!");
+}
+const music = document.getElementById("bg-music");
+let isPlaying = false;
+function toggleMusic(){
+  if(!isPlaying){
+    music.play();
+    document.querySelector('.music-btn').textContent='⏸️';
+  }else{
+    music.pause();
+    document.querySelector('.music-btn').textContent='▶️';
+  }
+  isPlaying = !isPlaying;
+}
+</script><div class="title slide-up">✦ RYUUMA VAN ASHVYR ✦</div><div class="profile slide-up">
+  <a href="https://wa.me//6287831482814">
+    <img src="https://files.catbox.moe/sq3cwl.jpg" alt="Profile">
+  </a>
+  <div class="profile-name">RYUUMA VAN ASHVYR</div>
+</div><div class="contact-box slide-up">
+  <div class="contact-left">
+    <p>DANA : 085706645429</p>
+    <button class="copy-btn" onclick="copyDana()">Salin</button>
+  </div>
+  <div class="contact-right">
+    <a href="https://wa.me/p/32786285757682891/6287831482814">
+      <img src="https://files.catbox.moe/e88mpe.jpg" alt="QR">
+    </a>
+  </div>
+</div><div class="banner slide-up">
+  <a href="https://wa.me//6287831482814">
+    <img src="https://files.catbox.moe/78l4dc.jpg" alt="Banner">
+  </a>
+</div><div class="fees-container slide-up">
+  <div class="fees-left">
+    💰 <strong>FEE LIST</strong><br>
+    1K ~ 100K : 2K<br>
+    101K ~ 300K : 3K<br>
+    301K ~ 500K : 5K<br>
+    501K ~ 800K : 8K<br>
+    801K ~ 1JT+ : 10K
+  </div>
+  <div class="fees-right">
+    ⚠️ <strong>TAMBAHAN</strong><br>
+    • MC Pending : +5K<br>
+    • All Reff : +5K<br>
+    • No Reff? → ❌<br>
+    • TRX batal → Fee tetap kepotong
+  </div>
+</div><div class="ending slide-up">⚡ POWERED BY RYUUMA VAN ASHVYR ⚡</div>
+</body>
+</html>
